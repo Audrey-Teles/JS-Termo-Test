@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        .keyboard {
+            margin-top: 2vh;
+            height: 30vh;
+            width: 95%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 3%;
+        }
+
+        .keyboard-row {
+            width: 100%;
+            height: 9.4vh;
+            gap: 0.5%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .key {
+            background-color: #edeeee;
+            color: black;
+            text-align: center;
+            flex-grow: 1;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .board {
+            width: 90%;
+            max-width: 250px;
+            height: 50vh;
+            /* max-height: 320px;
+  min-height: 200px; */
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 10vh;
+        }
+
+        .game-row {
+            height: 7.8vh;
+            /* max-height: 60px;
+  min-height: 45px; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .game-square {
+            width: 17%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            border: 2px solid #D3D6DA;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main>
+        <div class="board">
+            <div class="game-row game-row-0">
+                <div class="game-square" id="0"></div>
+                <div class="game-square" id="1"></div>
+                <div class="game-square" id="2"></div>
+                <div class="game-square" id="3"></div>
+                <div class="game-square" id="4"></div>
+            </div>
+            <div class="game-row game-row-1">
+                <div class="game-square" id="5"></div>
+                <div class="game-square" id="6"></div>
+                <div class="game-square" id="7"></div>
+                <div class="game-square" id="8"></div>
+                <div class="game-square" id="9"></div>
+            </div>
+            <div class="game-row game-row-2">
+                <div class="game-square" id="10"></div>
+                <div class="game-square" id="11"></div>
+                <div class="game-square" id="12"></div>
+                <div class="game-square" id="13"></div>
+                <div class="game-square" id="14"></div>
+            </div>
+            <div class="game-row game-row-3">
+                <div class="game-square" id="15"></div>
+                <div class="game-square" id="16"></div>
+                <div class="game-square" id="17"></div>
+                <div class="game-square" id="18"></div>
+                <div class="game-square" id="19"></div>
+            </div>
+            <div class="game-row game-row-4">
+                <div class="game-square" id="20"></div>
+                <div class="game-square" id="21"></div>
+                <div class="game-square" id="22"></div>
+                <div class="game-square" id="23"></div>
+                <div class="game-square" id="24"></div>
+            </div>
+            <div class="game-row game-row-5">
+                <div class="game-square" id="25"></div>
+                <div class="game-square" id="26"></div>
+                <div class="game-square" id="27"></div>
+                <div class="game-square" id="28"></div>
+                <div class="game-square" id="29"></div>
+            </div>
+        </div>
+
+        <div class="keyboard">
+            <div class="keyboard-row kb-row-1">
+                <div class="key" id="Q">Q</div>
+                <div class="key" id="W">W</div>
+                <div class="key" id="E">E</div>
+                <div class="key" id="R">R</div>
+                <div class="key" id="T">T</div>
+                <div class="key" id="Y">Y</div>
+                <div class="key" id="U">U</div>
+                <div class="key" id="I">I</div>
+                <div class="key" id="O">O</div>
+                <div class="key" id="P">P</div>
+            </div>
+            <div class="keyboard-row kb-row-2">
+                <div class="key" id="A">A</div>
+                <div class="key" id="S">S</div>
+                <div class="key" id="D">D</div>
+                <div class="key" id="F">F</div>
+                <div class="key" id="G">G</div>
+                <div class="key" id="H">H</div>
+                <div class="key" id="J">J</div>
+                <div class="key" id="K">K</div>
+                <div class="key" id="L">L</div>
+            </div>
+            <div class="keyboard-row kb-row-3">
+                <div class="key" id="enter">ENTER</div>
+                <div class="key" id="Z">Z</div>
+                <div class="key" id="X">X</div>
+                <div class="key" id="C">C</div>
+                <div class="key" id="V">V</div>
+                <div class="key" id="B">B</div>
+                <div class="key" id="N">N</div>
+                <div class="key" id="M">M</div>
+                <div class="key" id="backspace"></div>
+            </div>
+    </main>
+
+    <footer>
+        <script>
+             const key = document.querySelectorAll('.key');
+            const square = document.querySelectorAll('.game-square');
+            let i = 0;
+
+            key.forEach(key => key.addEventListener('click', () => {
+                let j = 0;
+
+                square.forEach(square => {
+                    if (i == 0) {
+                        if (square.textContent == "") {
+                            square.textContent = key.textContent;
+                            i++;
+                        }
+
+                        if (i - 1 == 30) {
+                            i = 0;
+                        }
+                    }
+                    j++;
+
+                    if (j == 30) {
+                        i = 0;
+                    }
+
+                })
+
+            }))
+        </script>
+    </footer>
+</body>
+
+</html>
